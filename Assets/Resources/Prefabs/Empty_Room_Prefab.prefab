@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3497203593069559516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8376156438015468980}
+  - component: {fileID: -1166639932886559426}
+  - component: {fileID: -3839312020384578635}
+  - component: {fileID: 1784951108760886105}
+  m_Layer: 0
+  m_Name: Empty_Room_Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8376156438015468980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497203593069559516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1166639932886559426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497203593069559516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18441b39f6c4f6842a109dfebfbb12b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorObject: {fileID: 0}
+  northWallObject: {fileID: 0}
+  southWallObject: {fileID: 0}
+  eastWallObject: {fileID: 0}
+  westWallObject: {fileID: 0}
+  isNorthDoor: 0
+  isSouthDoor: 0
+  isEastDoor: 0
+  isWestDoor: 0
+  doorNumber: 0
+  xScale: 0
+  zScale: 0
+--- !u!114 &-3839312020384578635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497203593069559516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99fa15a10433284a878e82fc83bf95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCleared: 0
+  doorNumber: 0
+  listOfWalls: []
+  floor: {fileID: 0}
+  northWall: {fileID: 0}
+  southWall: {fileID: 0}
+  eastWall: {fileID: 0}
+  westWall: {fileID: 0}
+  isPlayer: 0
+  isNorthConnected: 0
+  isSouthConnected: 0
+  isEastConnected: 0
+  isWestConnected: 0
+  listOfEnemies: []
+  numberOfEnemies: 0
+  minEnemies: 5
+  maxEnemies: 10
+--- !u!114 &1784951108760886105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497203593069559516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a46bc811d24d5248a213c4dd684fbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whenToOpenDoors: 0
+  isDoorsClosed: 0
