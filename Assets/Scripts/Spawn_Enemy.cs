@@ -53,7 +53,14 @@ public class Spawn_Enemy : MonoBehaviour
         GameObject tempEnemy = Instantiate(enemyChoice, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
         currentRoomComponents.listOfEnemies.Add(tempEnemy);
         tempEnemy.GetComponent<Enemy_Components>().whichRoom = currentRoom;
-        tempEnemy.name = "Enemy " + tempEnemy.transform.position;
+        if(enemyChoice.name == "Flying_Melee_Enemy_Prefab")
+            tempEnemy.name = "Enemy FM";
+        else if (enemyChoice.name == "Flying_Ranged_Enemy_Prefab")
+            tempEnemy.name = "Enemy FR";
+        else if (enemyChoice.name == "Grounded_Melee_Enemy_Prefab")
+            tempEnemy.name = "Enemy GM";
+        else if (enemyChoice.name == "Grounded_Ranged_Enemy_Prefab")
+            tempEnemy.name = "Enemy GR";
         tempEnemy.transform.parent = transform;
         currentRoomComponents.numberOfEnemies -= 1;
         isSpawning = false;

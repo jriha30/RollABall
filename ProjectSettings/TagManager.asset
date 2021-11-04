@@ -9,6 +9,11 @@ TagManager:
   - Doorway
   - Starting Room
   - Ending Room
+  - Wall
+  - FM Enemy
+  - FR Enemy
+  - GM Enemy
+  - GR Enemy
   layers:
   - Default
   - TransparentFX

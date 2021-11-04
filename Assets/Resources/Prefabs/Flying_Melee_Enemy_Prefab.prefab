@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7012571183551078812}
   - component: {fileID: -8238871446825875001}
   - component: {fileID: 7629413469464829498}
+  - component: {fileID: -5371037470120419295}
+  - component: {fileID: -8853571721342999835}
   m_Layer: 0
   m_Name: Flying_Melee_Enemy_Prefab
   m_TagString: Enemy
@@ -76,7 +78,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100010, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+  - {fileID: 2100000, guid: d9bfec1eea2e7414e9d98fad47de493c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichRoom: {fileID: 0}
+  maxHitpoints: 1
+  currentHitpoints: 0
+  armorClass: 6
+  damage: 10
 --- !u!54 &7629413469464829498
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +133,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &-5371037470120419295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922908189537696999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107af142cc98cda48b3f8297a464f2bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8853571721342999835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922908189537696999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a07b83bc98614746b2a4cd5fcc15e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

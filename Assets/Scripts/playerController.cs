@@ -95,25 +95,6 @@ public class playerController : MonoBehaviour
             rb.AddForce(new Vector3(0.0f, 2.0f, 0.0f) * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //foreach (GameObject i in Get_Room.currentRoom.GetComponent<Room_Components>().listOfWalls)
-            //{
-            //    BoxCollider currCollider = i.GetComponent<Doorway_Components>().doorway.GetComponent<BoxCollider>();
-            //    MeshRenderer currRenderer = i.GetComponent<Doorway_Components>().doorway.GetComponent<MeshRenderer>();
-            //    if (currCollider.enabled == false)
-            //    {
-            //        currCollider.enabled = true;
-            //        currRenderer.enabled = true;
-            //    }
-            //    else
-            //    {
-            //        currCollider.enabled = false;
-            //        currRenderer.enabled = false;
-            //    }
-            //}
-        }
-
         if (Input.GetKey(KeyCode.W))
         {
             isForward = true;

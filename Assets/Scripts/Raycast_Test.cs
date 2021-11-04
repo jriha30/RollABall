@@ -10,6 +10,12 @@ public class Raycast_Test : MonoBehaviour
 
     public GameObject projectile;
 
+    public List<GameObject> projectileList;
+
+    public bool isCharging;
+
+    public float charge = .75f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,29 +27,36 @@ public class Raycast_Test : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            isCharging = true;
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
             if(canvas.isActiveAndEnabled)
             canvas.ChangeTextOnAttack(Time_Record.current_Time);
 
-            GameObject projectileObject = Instantiate(projectile, transform.position, Quaternion.identity);
+            GameObject projectileObject = Instantiate(projectile, GetComponent<playerController>().playerCamera.transform.forward, Quaternion.identity);
             projectileObject.GetComponent<Get_Shot>().startPoint = GetComponent<playerController>().playerCamera.transform.position;
             projectileObject.GetComponent<Get_Shot>().direction = GetComponent<playerController>().playerCamera.transform.forward;
+            projectileObject.GetComponent<Get_Shot>().charge = charge;
 
+            isCharging = false;
+            charge = .75f;
 
-
-
-            RaycastHit hit;
-            if (Physics.Raycast(GetComponent<playerController>().playerCamera.transform.position, GetComponent<playerController>().playerCamera.transform.forward, out hit, 100))
-            {
-                GameObject tempObject = hit.collider.gameObject;
-                if (tempObject.tag == "Enemy")
-                {
-                    tempObject.GetComponent<Enemy_Components>().whichRoom.GetComponent<Room_Components>().listOfEnemies.Remove(tempObject);
-                    Destroy(hit.collider.gameObject);
-                }
-            }
 
             shootingSound.Play();
-            //print(GetComponent<playerController>().playerCamera.rotation.eulerAngles);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(isCharging && charge < 4)
+        {
+            charge += .01f;
+        }
+        if(charge >= 4)
+        {
+            charge = 4;
         }
     }
 }
