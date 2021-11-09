@@ -38,6 +38,7 @@ public class Raycast_Test : MonoBehaviour
             GameObject projectileObject = Instantiate(projectile, GetComponent<playerController>().playerCamera.transform.forward, Quaternion.identity);
             projectileObject.GetComponent<Get_Shot>().startPoint = GetComponent<playerController>().playerCamera.transform.position;
             projectileObject.GetComponent<Get_Shot>().direction = GetComponent<playerController>().playerCamera.transform.forward;
+            projectileObject.GetComponent<Get_Shot>().parent = gameObject;
             projectileObject.GetComponent<Get_Shot>().charge = charge;
 
             isCharging = false;

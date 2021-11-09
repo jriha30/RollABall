@@ -39,6 +39,8 @@ public class Room_Components : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        //Random.InitState(5);
+
         isCleared = false;
         floor = GetComponent<Rectangle_Room_Generator>().floorObject;
         northWall = GetComponent<Rectangle_Room_Generator>().northWallObject;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8238871446825875001}
   - component: {fileID: 7629413469464829498}
   - component: {fileID: -5371037470120419295}
-  - component: {fileID: -8853571721342999835}
+  - component: {fileID: 8356605759201894177}
   m_Layer: 0
   m_Name: Flying_Melee_Enemy_Prefab
   m_TagString: Enemy
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107af142cc98cda48b3f8297a464f2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8853571721342999835
+--- !u!114 &8356605759201894177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8922908189537696999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a07b83bc98614746b2a4cd5fcc15e42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ab1fbc5faa80794d8586a300e448842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  speed: 3

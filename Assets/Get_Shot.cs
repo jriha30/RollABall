@@ -6,11 +6,12 @@ public class Get_Shot : MonoBehaviour
 {
     public Vector3 startPoint;
     public Vector3 direction;
-    public Vector3 endPoint;
 
     public float charge;
     public float speed;
     public float damage;
+
+    public GameObject parent;
 
     public float whenToDestroy;
 
@@ -18,7 +19,6 @@ public class Get_Shot : MonoBehaviour
     void Start()
     {
         transform.position = startPoint;
-        endPoint = startPoint + direction * 5;
         speed *= charge;
         damage *= charge;
         transform.localScale *= charge;
@@ -29,13 +29,21 @@ public class Get_Shot : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy")
         {
-            GameObject tempEnemy = collision.transform.gameObject;
-            if(tempEnemy.GetComponent<Enemy_Functions>().Dodge(tempEnemy.GetComponent<Enemy_Components>().armorClass))
+            GameObject hitCharacter = collision.transform.gameObject;
+            if(hitCharacter.GetComponent<Enemy_Functions>().Dodge(hitCharacter.GetComponent<Enemy_Components>().armorClass))
             {
-                tempEnemy.GetComponent<Enemy_Functions>().GetHit(damage * charge);
+                hitCharacter.GetComponent<Enemy_Functions>().GetHit(damage * charge);
             }
         }
-        if (collision.transform.tag != "Player")
+        else if(collision.transform.tag == "Player")
+        {
+            GameObject hitCharacter = collision.transform.gameObject;
+            if (hitCharacter.GetComponent<Player_Functions>().Dodge(hitCharacter.GetComponent<Player_Components>().armorClass))
+            {
+                hitCharacter.GetComponent<Player_Functions>().GetHit(damage * charge);
+            }
+        }
+        if (collision.gameObject != parent)
         Destroy(transform.gameObject);
     }
 
