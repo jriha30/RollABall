@@ -51,9 +51,10 @@ public class GM_Enemy_Controller : MonoBehaviour
 
         Vector3 chosenLocation = listOfLocs[Random.Range(0, listOfLocs.Count)];
 
+        //Vector3 direction = 
+
         Vector3 newEnemyPos = transform.position - chosenLocation;
 
         transform.position -= newEnemyPos / 100 * speed;
     }
-
 }

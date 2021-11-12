@@ -129,11 +129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
-  endPoint: {x: 0, y: 0, z: 0}
   charge: 0
   speed: 5
-  damage: 3
-  whenToDestroy: 5
+  damage: 5
+  parent: {fileID: 0}
+  whenToDestroy: 20
 --- !u!96 &5283250460513161452
 TrailRenderer:
   serializedVersion: 2

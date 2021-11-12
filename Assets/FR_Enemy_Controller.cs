@@ -6,7 +6,7 @@ public class FR_Enemy_Controller : MonoBehaviour
 {
     public GameObject player;
 
-    private int upDownDirection;
+    public int upDownDirection;
 
     public float speed;
 
@@ -28,7 +28,7 @@ public class FR_Enemy_Controller : MonoBehaviour
             upDownDirection = -1;
         speed = Random.Range(.2f, 1);
         player = GameObject.Find("Player");
-        distance = Random.Range(1f, 5f);
+        distance = Random.Range(2f, 10f);
         upperBound = transform.position.y + distance;
         lowerBound = transform.position.y - distance;
     }
@@ -41,9 +41,9 @@ public class FR_Enemy_Controller : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Floor")
+        if(collision.gameObject.name == "Floor" || collision.gameObject.name == "Ceiling")
         {
-            ChangeDirection(upDownDirection);
+            ChangeDirection();
         }
         else if(collision.gameObject == player)
         {
@@ -79,21 +79,21 @@ public class FR_Enemy_Controller : MonoBehaviour
             GameObject projectileObject = Instantiate(projectile, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
             projectileObject.GetComponent<Rigidbody>().useGravity = false;
             projectileObject.GetComponent<Get_Shot>().startPoint = transform.position;
-            projectileObject.GetComponent<Get_Shot>().direction = player.transform.position - transform.position;
+            projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
             projectileObject.GetComponent<Get_Shot>().parent = gameObject;
-            projectileObject.GetComponent<Get_Shot>().charge = .75f;
+            projectileObject.GetComponent<Get_Shot>().charge = Random.Range(.5f, 1.25f);
         }
     }
 
-    private void ChangeDirection(int direction)
+    private void ChangeDirection()
     {
-        if (direction == -1)
+        if (upDownDirection == -1)
         {
-            direction = 1;
+            upDownDirection = 1;
         }
-        else if (direction == 1)
+        else if (upDownDirection == 1)
         {
-            direction = -1;
+            upDownDirection = -1;
         }
     }
 

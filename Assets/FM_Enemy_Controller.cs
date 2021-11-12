@@ -8,16 +8,36 @@ public class FM_Enemy_Controller : MonoBehaviour
 
     public float speed;
 
+    public float force;
+
+    public Vector3 directionToGo;
+
+    public bool shouldMove = false;
+
+
+    public float delay;
+    private float startTime;
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        startTime = Time_Record.current_Time + delay;
+    }
+
+    private void Update()
+    {
+        if(!shouldMove && Time_Record.current_Time >= startTime)
+        {
+            shouldMove = true;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(shouldMove)
         FlyingMeleeControl();
     }
 
@@ -25,6 +45,7 @@ public class FM_Enemy_Controller : MonoBehaviour
     {
         if (collision.gameObject == player)
         {
+            player.GetComponent<Rigidbody>().AddForce(directionToGo * force, ForceMode.VelocityChange);
             if (player.GetComponent<Player_Functions>().Dodge(player.GetComponent<Player_Components>().armorClass))
             {
                 player.GetComponent<Player_Functions>().GetHit(GetComponent<Enemy_Components>().damage);
@@ -33,11 +54,9 @@ public class FM_Enemy_Controller : MonoBehaviour
         }
     }
 
-
     private void FlyingMeleeControl()
     {
-        Vector3 playerPos = player.transform.position;
-        Vector3 newEnemyPos = transform.position - playerPos;
-        transform.position -= newEnemyPos / 100 * speed;
+        directionToGo = (player.transform.position - transform.position).normalized;
+        transform.position += directionToGo / 10 * speed;
     }
 }

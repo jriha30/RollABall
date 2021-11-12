@@ -26,6 +26,7 @@ public class Map_Components : MonoBehaviour
         initialRoom = GetComponent<Map_Generator>().initialRoom;
         totalDoorNumber = GetComponent<Map_Generator>().totalDoorNumber;
         listOfRooms = GetComponent<Map_Generator>().listOfRooms;
+        listOfRooms.Insert(1, initialRoom);
         listOfWalls = GetComponent<Map_Generator>().listOfWalls;
     }
 

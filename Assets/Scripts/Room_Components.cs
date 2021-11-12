@@ -21,6 +21,8 @@ public class Room_Components : MonoBehaviour
     //[HideInInspector]
     public GameObject westWall;
 
+    public GameObject ceiling;
+
     public bool isPlayer = false;
 
 

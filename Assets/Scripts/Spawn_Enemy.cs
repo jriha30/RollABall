@@ -46,10 +46,15 @@ public class Spawn_Enemy : MonoBehaviour
             return;
         }
         Transform roomFloor = currentRoomComponents.floor.transform;
-        float randomX = Random.Range(roomFloor.position.x - (roomFloor.lossyScale.x / 2), roomFloor.position.x + (roomFloor.lossyScale.x / 2));
-        float randomY = Random.Range(2f, 10f);
-        float randomZ = Random.Range(roomFloor.position.z - (roomFloor.lossyScale.z / 2), roomFloor.position.z + (roomFloor.lossyScale.z / 2));
+        Transform roomCeiling = currentRoomComponents.ceiling.transform;
+        float randomX = Random.Range(roomFloor.position.x - (roomFloor.lossyScale.x / 2) + 2, roomFloor.position.x + (roomFloor.lossyScale.x / 2) - 2);
+        float randomY = Random.Range(roomFloor.position.y + 2, roomCeiling.position.y - 2);
+        float randomZ = Random.Range(roomFloor.position.z - (roomFloor.lossyScale.z / 2) + 2, roomFloor.position.z + (roomFloor.lossyScale.z / 2) - 2);
         GameObject enemyChoice = enemy[Random.Range(0, enemy.Count)];
+        if(enemyChoice.name == "Grounded_Melee_Enemy_Prefab" || enemyChoice.name == "Grounded_Ranged_Enemy_Prefab")
+        {
+            randomY = 1;
+        }
         GameObject tempEnemy = Instantiate(enemyChoice, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
         currentRoomComponents.listOfEnemies.Add(tempEnemy);
         tempEnemy.GetComponent<Enemy_Components>().whichRoom = currentRoom;

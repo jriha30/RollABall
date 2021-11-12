@@ -115,7 +115,7 @@ MonoBehaviour:
   whichRoom: {fileID: 0}
   maxHitpoints: 10
   currentHitpoints: 0
-  armorClass: 2
+  armorClass: 5
   damage: 10
 --- !u!54 &5659915222433145337
 Rigidbody:

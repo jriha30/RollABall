@@ -42,6 +42,7 @@ public class Enemy_Functions : MonoBehaviour
 
     public void Die()
     {
+        if(GetComponent<Enemy_Components>().whichRoom != null)
         GetComponent<Enemy_Components>().whichRoom.GetComponent<Room_Components>().listOfEnemies.Remove(transform.gameObject);
         Destroy(transform.gameObject);
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Fix_Map : MonoBehaviour
 {
     private List<GameObject> listOfWalls;
-    private List<GameObject> listOfDoorways;
     public List<GameObject> listOfNotDoorways;
     public List<GameObject> listOfOverlappingDoorways;
     public List<GameObject> listOfNotOverlappingDoorways;
@@ -30,21 +29,31 @@ public class Fix_Map : MonoBehaviour
         {
             ReplaceNotOverlappingDoors(i);
         }
-        //SetMapSize();
+        SetMapSize();
         SetFinalRoom();
+        AddCeilings();
+    }
+
+    private void AddCeilings()
+    {
+        foreach(GameObject i in listOfRooms)
+        {
+            Transform floor = i.transform.Find("Floor");
+            GameObject ceiling = Instantiate(floor.gameObject);
+            ceiling.transform.parent = i.transform;
+            ceiling.transform.localScale = floor.localScale;
+            ceiling.name = "Ceiling";
+            ceiling.transform.localPosition = new Vector3(0, 5, 0);
+            i.GetComponent<Room_Components>().ceiling = ceiling;
+        }
     }
 
     private void SetMapSize()
     {
-        float xScale = 0;
-        float yScale = Random.Range(1f, 5f);
-        float zScale = 0;
-        while(xScale < 2f && zScale < 2f)
-        {
-            xScale = Random.Range(1f, 5f);
-            zScale = Random.Range(1f, 5f);
-        }
-        transform.localScale = new Vector3(xScale, yScale, zScale);
+        //float xScale = Random.Range(1f, 3f);
+        float yScale = Random.Range(2f, 3f);
+        //float zScale = Random.Range(1f, 3f);
+        transform.localScale = new Vector3(1, yScale, 1);
     }
 
     private void SetFinalRoom()
