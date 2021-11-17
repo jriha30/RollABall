@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Fix_Map : MonoBehaviour
 {
-    private List<GameObject> listOfWalls;
+    [HideInInspector]
+    public List<GameObject> listOfWalls;
+    [HideInInspector]
     public List<GameObject> listOfNotDoorways;
+    [HideInInspector]
     public List<GameObject> listOfOverlappingDoorways;
+    [HideInInspector]
     public List<GameObject> listOfNotOverlappingDoorways;
     public List<GameObject> listOfRooms;
+
+    public List<GameObject> listNoStart;
 
     public GameObject finalRoom;
 
@@ -50,16 +56,18 @@ public class Fix_Map : MonoBehaviour
 
     private void SetMapSize()
     {
-        //float xScale = Random.Range(1f, 3f);
+        float xScale = Random.Range(1f, 1.5f);
         float yScale = Random.Range(2f, 3f);
-        //float zScale = Random.Range(1f, 3f);
-        transform.localScale = new Vector3(1, yScale, 1);
+        float zScale = Random.Range(1f, 1.5f);
+        transform.localScale = new Vector3(xScale, yScale, zScale);
     }
 
     private void SetFinalRoom()
     {
-        List<GameObject> listNoStart = listOfRooms;
-        listNoStart.Remove(listNoStart[0]);
+        listNoStart = new List<GameObject>(listOfRooms);
+        
+            //listOfRooms;
+        listNoStart.RemoveAt(0);
         foreach (GameObject i in listNoStart)
         {
             if (finalRoom == null)
@@ -76,6 +84,10 @@ public class Fix_Map : MonoBehaviour
         }
         finalRoom.name = "Boss Room";
         finalRoom.tag = "Ending Room";
+        foreach (GameObject i in listNoStart)
+        {
+            print(i.name);
+        }
     }
 
     private float GetAverageRoomSize(GameObject i)

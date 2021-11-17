@@ -37,6 +37,8 @@ public class playerController : MonoBehaviour
 
     private Walking_Sound walkingSound;
 
+    private Player_Components components;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,8 @@ public class playerController : MonoBehaviour
         isRight = false;
 
         walkingSound = GetComponent<Walking_Sound>();
+
+        components = GetComponent<Player_Components>();
     }
 
     private void Update()
@@ -76,7 +80,42 @@ public class playerController : MonoBehaviour
     {
         CheckFalling();
         MovePlayer();
+        StaminaChanges();
         ResetValues();
+    }
+
+    private void StaminaChanges()
+    {
+        if (isSprinting)
+        {
+            components.currentStamina -= components.staminaBar.GetComponent<StaminaBar>().emptyRate;
+        }
+        else if (isMoving)
+        {
+            components.currentStamina += components.staminaBar.GetComponent<StaminaBar>().recoverRate / 5;
+        }
+        else
+        {
+            components.currentStamina += components.staminaBar.GetComponent<StaminaBar>().recoverRate;
+        }
+    }
+
+    void LateUpdate()
+    {
+        if(components.currentStamina > components.maxStamina)
+        {
+            components.currentStamina = components.maxStamina;
+        }
+        else if(components.currentStamina < 0)
+        {
+            isSprinting = false;
+            components.currentStamina = 0;
+        }
+
+        if (!isMoving)
+        {
+            isSprinting = false;
+        }
     }
 
 
@@ -84,10 +123,10 @@ public class playerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            if (isSprinting)
-                isSprinting = false;
-            else
+            if (!isSprinting)
                 isSprinting = true;
+            else
+                isSprinting = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isFalling)

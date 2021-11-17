@@ -78,7 +78,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42c4d29dfb6865c418faf83864390213, type: 2}
+  - {fileID: 2100000, guid: eab08dd148215464385208d0217d4f36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichRoom: {fileID: 0}
-  maxHitpoints: 5
+  maxHitpoints: 20
   currentHitpoints: 0
-  armorClass: 3
+  armorClass: 0
   damage: 5
 --- !u!54 &1682240849756613241
 Rigidbody:

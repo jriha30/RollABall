@@ -12,6 +12,10 @@ public class GM_Enemy_Controller : MonoBehaviour
 
     public float distanceFromPlayer;
 
+
+    public Vector3 directionToGo;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +42,7 @@ public class GM_Enemy_Controller : MonoBehaviour
             {
                 player.GetComponent<Player_Functions>().GetHit(GetComponent<Enemy_Components>().damage);
             }
-            GetComponent<Enemy_Functions>().GetHit(1);
+            //GetComponent<Enemy_Functions>().GetHit(1);    THIS ENEMY SHOULDN'T TAKE DAMAGE FROM HITTING THE PLAYER!!!
         }
     }
 
@@ -50,11 +54,7 @@ public class GM_Enemy_Controller : MonoBehaviour
         listOfLocs[3] = player.transform.position - new Vector3(0, 0, distanceFromPlayer);
 
         Vector3 chosenLocation = listOfLocs[Random.Range(0, listOfLocs.Count)];
-
-        //Vector3 direction = 
-
-        Vector3 newEnemyPos = transform.position - chosenLocation;
-
-        transform.position -= newEnemyPos / 100 * speed;
+        directionToGo = (chosenLocation - transform.position).normalized;
+        transform.position += directionToGo / 10 * speed;
     }
 }

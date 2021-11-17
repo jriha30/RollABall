@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Map_Generator : MonoBehaviour
 {
-    public GameObject test1;
-    public GameObject test2;
+    //public GameObject test1;
+    //public GameObject test2;
 
 
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject> listOfRooms;
 
     [HideInInspector]
@@ -57,12 +57,6 @@ public class Map_Generator : MonoBehaviour
                 roomNumberCounter += 1;
             }
         }
-        //while(finalRoom == initialRoom)
-        //{
-        //    finalRoom = listOfRooms[Random.Range(0, listOfRooms.Count)];
-        //}
-        //finalRoom.name = "Boss Room";
-        //finalRoom.tag = "Ending Room";
     }
 
 
@@ -140,15 +134,6 @@ public class Map_Generator : MonoBehaviour
         roomClone.transform.parent = transform;
         //totalDoorNumber += roomClone.GetComponent<Rectangle_Room_Generator>().doorNumber;
         return roomClone;
-    }
-
-    private void SetValues()
-    {
-        numberOfRooms = listOfRooms.Count;
-        foreach(GameObject i in listOfRooms)
-        {
-            totalDoorNumber += i.GetComponent<Rectangle_Room_Generator>().doorNumber;
-        }
     }
 
     private void CreateAdjacentRoom(GameObject parentRoom, string direction)

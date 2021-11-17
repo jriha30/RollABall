@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichRoom: {fileID: 0}
-  maxHitpoints: 10
+  maxHitpoints: 50
   currentHitpoints: 0
-  armorClass: 5
+  armorClass: 0
   damage: 10
 --- !u!54 &5659915222433145337
 Rigidbody:
@@ -159,5 +159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   listOfLocs: []
-  speed: 2
+  speed: 1
   distanceFromPlayer: 3
+  directionToGo: {x: 0, y: 0, z: 0}

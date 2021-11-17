@@ -12,6 +12,8 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        healthBarImage.fillAmount = Mathf.Clamp(player.GetComponent<Player_Components>().currentHitpoints / player.GetComponent<Player_Components>().maxHitpoints, 0, 1f);
+        Vector3 newScale = healthBarImage.transform.localScale;
+        newScale.x = Mathf.Clamp(player.GetComponent<Player_Components>().currentHitpoints / player.GetComponent<Player_Components>().maxHitpoints, 0, 1f);
+        healthBarImage.transform.localScale = newScale;
     }
 }

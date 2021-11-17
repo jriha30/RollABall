@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichRoom: {fileID: 0}
-  maxHitpoints: 5
+  maxHitpoints: 20
   currentHitpoints: 0
-  armorClass: 4
+  armorClass: 0
   damage: 5
 --- !u!54 &2313145301271453794
 Rigidbody:
