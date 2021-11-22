@@ -66,7 +66,6 @@ public class Fix_Map : MonoBehaviour
     {
         listNoStart = new List<GameObject>(listOfRooms);
         
-            //listOfRooms;
         listNoStart.RemoveAt(0);
         foreach (GameObject i in listNoStart)
         {
@@ -84,10 +83,7 @@ public class Fix_Map : MonoBehaviour
         }
         finalRoom.name = "Boss Room";
         finalRoom.tag = "Ending Room";
-        foreach (GameObject i in listNoStart)
-        {
-            print(i.name);
-        }
+        finalRoom.AddComponent<Boss_Room>();
     }
 
     private float GetAverageRoomSize(GameObject i)

@@ -643,15 +643,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4a6d892d4cb334ab22e07b4c45640e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test1: {fileID: 0}
-  test2: {fileID: 0}
   listOfRooms: []
   listOfWalls: []
   initialRoom: {fileID: 0}
   finalRoom: {fileID: 0}
   totalDoorNumber: 0
   numberOfRooms: 5
-  roomsToAdd: 10
+  roomsToAdd: 500
 --- !u!4 &926719657
 Transform:
   m_ObjectHideFlags: 0
@@ -697,10 +695,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a439c78a4d1b4e641995480dc78c5ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfWalls: []
   listOfNotDoorways: []
   listOfOverlappingDoorways: []
   listOfNotOverlappingDoorways: []
   listOfRooms: []
+  listNoStart: []
   finalRoom: {fileID: 0}
   player: {fileID: 1953193351}
 --- !u!1 &1058388417
