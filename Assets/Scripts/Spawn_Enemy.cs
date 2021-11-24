@@ -10,7 +10,7 @@ public class Spawn_Enemy : MonoBehaviour
 
     public static bool isSpawning = false;
 
-    public Timer_Functions timer;
+    public GameObject timer;
 
     public float whenToSpawn = 0;
 
@@ -18,7 +18,9 @@ public class Spawn_Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        print("About to set Timer!");
+        timer = GameObject.Find("Time_Manager");
+        print(timer.name);
     }
 
     // Update is called once per frame
@@ -26,7 +28,7 @@ public class Spawn_Enemy : MonoBehaviour
     {
         if (!isSpawning)
         {
-            whenToSpawn = timer.TimeTest(Time_Record.current_Time);
+            whenToSpawn = timer.GetComponent<Timer_Functions>().TimeTest(Time_Record.current_Time);
             isSpawning = true;
         }
         enemySpawnClock = Time_Record.newTime(enemySpawnClock);

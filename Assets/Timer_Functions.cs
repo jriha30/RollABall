@@ -10,7 +10,7 @@ public class Timer_Functions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        print("Timer now exists!");
     }
 
     // Update is called once per frame
