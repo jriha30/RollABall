@@ -6,21 +6,60 @@ public class GR_Enemy_Controller : MonoBehaviour
 {
     public GameObject player;
     public GameObject projectile;
+    private Rigidbody rb;
+
+    public float frequency;
 
     public float speed;
 
     public Vector3 directionVector = Vector3.zero;
 
+    public bool isShooting = false;
+
+    public float shootClock = 0;
+    public float whenToShoot = 0;
+
+    public GameObject timer;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        timer = GameObject.Find("Time_Manager");
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         GroundedRangedControl();
+    }
+
+
+    void Update()
+    {
+        if (!isShooting)
+        {
+            whenToShoot = timer.GetComponent<Timer_Functions>().TimeTest(Time_Record.current_Time, frequency);
+            isShooting = true;
+        }
+        shootClock = Time_Record.newTime(shootClock);
+        if (shootClock > whenToShoot)
+        {
+            Shoot();
+        }
+    }
+
+
+    private void Shoot()
+    {
+        GameObject projectileObject = Instantiate(projectile, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        projectileObject.GetComponent<Rigidbody>().useGravity = false;
+        projectileObject.GetComponent<Get_Shot>().startPoint = transform.position;
+        projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
+        projectileObject.GetComponent<Get_Shot>().parent = gameObject;
+        projectileObject.GetComponent<Get_Shot>().charge = Random.Range(.5f, 1.25f);
+        isShooting = false;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -36,15 +75,27 @@ public class GR_Enemy_Controller : MonoBehaviour
     }
 
     private void GroundedRangedControl()
-    {   
-        if (Random.Range(0, 120) == 0)
+    {
+        float rand = Random.Range(0f, 10f);
+        if(rand >= 0 && rand < 1)
         {
-            GameObject projectileObject = Instantiate(projectile, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-            projectileObject.GetComponent<Rigidbody>().useGravity = false;
-            projectileObject.GetComponent<Get_Shot>().startPoint = transform.position;
-            projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
-            projectileObject.GetComponent<Get_Shot>().parent = gameObject;
-            projectileObject.GetComponent<Get_Shot>().charge = Random.Range(.5f, 1.25f);
+            rb.AddForce(Vector3.forward * speed, ForceMode.Impulse);
+        }
+        else if (rand >= 1 && rand < 2)
+        {
+            rb.AddForce(Vector3.back * speed, ForceMode.Impulse);
+        }
+        else if (rand >= 2 && rand < 3)
+        {
+            rb.AddForce(Vector3.left * speed, ForceMode.Impulse);
+        }
+        else if (rand >= 3 && rand < 5)
+        {
+            rb.AddForce(Vector3.right * speed, ForceMode.Impulse);
+        }
+        else
+        {
+            return;
         }
     }
 }

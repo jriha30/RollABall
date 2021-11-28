@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichRoom: {fileID: 0}
-  maxHitpoints: 50
+  maxHitpoints: 25
   currentHitpoints: 0
   armorClass: 0
   damage: 10

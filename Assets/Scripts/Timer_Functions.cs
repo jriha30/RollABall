@@ -10,7 +10,7 @@ public class Timer_Functions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("Timer now exists!");
+
     }
 
     // Update is called once per frame
@@ -28,9 +28,9 @@ public class Timer_Functions : MonoBehaviour
     }
 
 
-    public float TimeTest(float startingTime)
+    public float TimeTest(float startingTime, float addedTime)
     {
-        float newTime = startingTime + Random.Range(1f, 5f);
+        float newTime = startingTime + addedTime;
         return newTime;
     }
 }

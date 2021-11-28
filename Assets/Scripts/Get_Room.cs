@@ -7,6 +7,8 @@ public class Get_Room : MonoBehaviour
     public static GameObject currentRoom;
     public static GameObject previousRoom;
 
+    public GameObject bossReference;
+
     private float time;
 
     private Vector3 down;
@@ -15,6 +17,11 @@ public class Get_Room : MonoBehaviour
     {
         time = 0;
         down = transform.TransformDirection(Vector3.down * 2);
+    }
+
+    public void SetBossReference(GameObject bossRef)
+    {
+        bossReference = bossRef;
     }
 
     // Update is called once per frame
@@ -42,9 +49,9 @@ public class Get_Room : MonoBehaviour
             previousRoom.GetComponent<Change_Self>().ClearEnemies();
             if (!currentRoom.GetComponent<Room_Components>().isCleared)
             {
-                if(currentRoom.tag == "Ending Room")
+                if (currentRoom.tag == "Ending Room")
                 {
-                    print("The boss has been summoned!");
+                    bossReference.SetActive(true);
                 }
                 currentRoom.GetComponent<Change_Self>().CloseDoors(Time_Record.current_Time);
             }

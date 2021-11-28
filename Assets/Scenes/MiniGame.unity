@@ -295,7 +295,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4246625217971055057, guid: 9237739c5dd58304185d229b55c9f954, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4246625217971055057, guid: 9237739c5dd58304185d229b55c9f954, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1040,7 +1040,7 @@ RectTransform:
   - {fileID: 557686672}
   - {fileID: 1859792357}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1499,9 +1499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1953193351}
   height: -50
-  enemy_Manager: {fileID: 7986917824449493484, guid: ed6bd1b3ab061ec45aa60d773c3d5169, type: 3}
-  room_Manager: {fileID: 7069666916137928886, guid: 6cd8aec78f57ffa48b0a13208c632903, type: 3}
-  time_Manager: {fileID: 1865266412508614828, guid: 7a9503e22f797f8458656f044671c188, type: 3}
+  Manager: {fileID: 7119026363959030752, guid: 29bcf2add0e76dc4bb6da430253b4f75, type: 3}
 --- !u!114 &1953193351
 MonoBehaviour:
   m_ObjectHideFlags: 0

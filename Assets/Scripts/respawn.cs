@@ -8,11 +8,7 @@ public class respawn : MonoBehaviour
     public playerController player;
     public int height;
 
-    public GameObject enemy_Manager;
-    public GameObject room_Manager;
-    public GameObject time_Manager;
-
-
+    public GameObject Manager;
 
     // Start is called before the first frame update
     void Start()
@@ -28,32 +24,20 @@ public class respawn : MonoBehaviour
             player.transform.position = new Vector3(0f, 0.5f, 0f);
             player.isSprinting = false;
             ClearArea();
-            GameObject time = Instantiate(time_Manager);
-            time.name = "Time_Manager";
-            GameObject enemy = Instantiate(enemy_Manager);
-            enemy.name = "Enemy_Manager";
-            GameObject room = Instantiate(room_Manager);
-            room.name = "Room_Manager";
+            GameObject manager_object = Instantiate(Manager);
+            manager_object.name = "Manager_Manager";
         }
     }
 
     private void ClearArea()
     {
-        if(transform.Find("Hub") != null)
+        if(GameObject.Find("Hub") != null)
         {
-            Destroy(transform.Find("Hub"));
+            Destroy(GameObject.Find("Hub"));
         }
-        if (GameObject.Find("Enemy_Manager") != null)
+        if (GameObject.Find("Manager_Manager") != null)
         {
-            Destroy(GameObject.Find("Enemy_Manager"));
-        }
-        if (GameObject.Find("Room_Manager") != null)
-        {
-            Destroy(GameObject.Find("Room_Manager"));
-        }
-        if (GameObject.Find("Time_Manager") != null)
-        {
-            Destroy(GameObject.Find("Time_Manager"));
+            Destroy(GameObject.Find("Manager_Manager"));
         }
     }
 }

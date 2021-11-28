@@ -5,19 +5,21 @@ using UnityEngine;
 public class FR_Enemy_Controller : MonoBehaviour
 {
     public GameObject player;
+    public GameObject projectile;
+    public GameObject timer;
 
     public int upDownDirection;
 
     public float speed;
-
-
     public float distance;
-
     private float upperBound;
     private float lowerBound;
 
+    public bool isShooting = false;
+    public float shootClock = 0;
+    public float whenToShoot = 0;
 
-    public GameObject projectile;
+    public float frequency;
 
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class FR_Enemy_Controller : MonoBehaviour
             upDownDirection = -1;
         speed = Random.Range(.2f, 1);
         player = GameObject.Find("Player");
+        timer = GameObject.Find("Time_Manager");
         distance = Random.Range(2f, 10f);
         upperBound = transform.position.y + distance;
         lowerBound = transform.position.y - distance;
@@ -37,6 +40,31 @@ public class FR_Enemy_Controller : MonoBehaviour
     void FixedUpdate()
     {
         FlyingRangedControl();
+    }
+
+    void Update()
+    {
+        if (!isShooting)
+        {
+            whenToShoot = timer.GetComponent<Timer_Functions>().TimeTest(Time_Record.current_Time, frequency);
+            isShooting = true;
+        }
+        shootClock = Time_Record.newTime(shootClock);
+        if (shootClock > whenToShoot)
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject projectileObject = Instantiate(projectile, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        projectileObject.GetComponent<Rigidbody>().useGravity = false;
+        projectileObject.GetComponent<Get_Shot>().startPoint = transform.position;
+        projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
+        projectileObject.GetComponent<Get_Shot>().parent = gameObject;
+        projectileObject.GetComponent<Get_Shot>().charge = Random.Range(.5f, 1.25f);
+        isShooting = false;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -73,15 +101,6 @@ public class FR_Enemy_Controller : MonoBehaviour
         else if(upDownDirection == -1)
         {
             Move(new Vector3(0, -.1f * speed, 0));
-        }
-        if(Random.Range(0,120) == 0)
-        {
-            GameObject projectileObject = Instantiate(projectile, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-            projectileObject.GetComponent<Rigidbody>().useGravity = false;
-            projectileObject.GetComponent<Get_Shot>().startPoint = transform.position;
-            projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
-            projectileObject.GetComponent<Get_Shot>().parent = gameObject;
-            projectileObject.GetComponent<Get_Shot>().charge = Random.Range(.5f, 1.25f);
         }
     }
 

@@ -18,9 +18,7 @@ public class Spawn_Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("About to set Timer!");
-        timer = GameObject.Find("Time_Manager");
-        print(timer.name);
+
     }
 
     // Update is called once per frame
@@ -28,7 +26,7 @@ public class Spawn_Enemy : MonoBehaviour
     {
         if (!isSpawning)
         {
-            whenToSpawn = timer.GetComponent<Timer_Functions>().TimeTest(Time_Record.current_Time);
+            whenToSpawn = timer.GetComponent<Timer_Functions>().TimeTest(Time_Record.current_Time, frequency);
             isSpawning = true;
         }
         enemySpawnClock = Time_Record.newTime(enemySpawnClock);
@@ -41,35 +39,43 @@ public class Spawn_Enemy : MonoBehaviour
     public void Spawn()
     {
         GameObject currentRoom = Get_Room.currentRoom;
-        Room_Components currentRoomComponents = currentRoom.GetComponent<Room_Components>();
-        if(currentRoomComponents.isCleared || currentRoomComponents.numberOfEnemies == 0)
+        if(currentRoom != null)
+        {
+            Room_Components currentRoomComponents = currentRoom.GetComponent<Room_Components>();
+            if (currentRoomComponents.isCleared || currentRoomComponents.numberOfEnemies == 0)
+            {
+                isSpawning = false;
+                return;
+            }
+            Transform roomFloor = currentRoomComponents.floor.transform;
+            Transform roomCeiling = currentRoomComponents.ceiling.transform;
+            float randomX = Random.Range(roomFloor.position.x - (roomFloor.lossyScale.x / 2) + 2, roomFloor.position.x + (roomFloor.lossyScale.x / 2) - 2);
+            float randomY = Random.Range(roomFloor.position.y + 2, roomCeiling.position.y - 2);
+            float randomZ = Random.Range(roomFloor.position.z - (roomFloor.lossyScale.z / 2) + 2, roomFloor.position.z + (roomFloor.lossyScale.z / 2) - 2);
+            GameObject enemyChoice = enemy[Random.Range(0, enemy.Count)];
+            if (enemyChoice.name == "Grounded_Melee_Enemy_Prefab" || enemyChoice.name == "Grounded_Ranged_Enemy_Prefab")
+            {
+                randomY = 1;
+            }
+            GameObject tempEnemy = Instantiate(enemyChoice, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
+            currentRoomComponents.listOfEnemies.Add(tempEnemy);
+            tempEnemy.GetComponent<Enemy_Components>().whichRoom = currentRoom;
+            if (enemyChoice.name == "Flying_Melee_Enemy_Prefab")
+                tempEnemy.name = "Enemy FM";
+            else if (enemyChoice.name == "Flying_Ranged_Enemy_Prefab")
+                tempEnemy.name = "Enemy FR";
+            else if (enemyChoice.name == "Grounded_Melee_Enemy_Prefab")
+                tempEnemy.name = "Enemy GM";
+            else if (enemyChoice.name == "Grounded_Ranged_Enemy_Prefab")
+                tempEnemy.name = "Enemy GR";
+            tempEnemy.transform.parent = transform;
+            currentRoomComponents.numberOfEnemies -= 1;
+            isSpawning = false;
+        }
+        else
         {
             isSpawning = false;
             return;
         }
-        Transform roomFloor = currentRoomComponents.floor.transform;
-        Transform roomCeiling = currentRoomComponents.ceiling.transform;
-        float randomX = Random.Range(roomFloor.position.x - (roomFloor.lossyScale.x / 2) + 2, roomFloor.position.x + (roomFloor.lossyScale.x / 2) - 2);
-        float randomY = Random.Range(roomFloor.position.y + 2, roomCeiling.position.y - 2);
-        float randomZ = Random.Range(roomFloor.position.z - (roomFloor.lossyScale.z / 2) + 2, roomFloor.position.z + (roomFloor.lossyScale.z / 2) - 2);
-        GameObject enemyChoice = enemy[Random.Range(0, enemy.Count)];
-        if(enemyChoice.name == "Grounded_Melee_Enemy_Prefab" || enemyChoice.name == "Grounded_Ranged_Enemy_Prefab")
-        {
-            randomY = 1;
-        }
-        GameObject tempEnemy = Instantiate(enemyChoice, new Vector3(randomX, randomY, randomZ), Quaternion.identity);
-        currentRoomComponents.listOfEnemies.Add(tempEnemy);
-        tempEnemy.GetComponent<Enemy_Components>().whichRoom = currentRoom;
-        if(enemyChoice.name == "Flying_Melee_Enemy_Prefab")
-            tempEnemy.name = "Enemy FM";
-        else if (enemyChoice.name == "Flying_Ranged_Enemy_Prefab")
-            tempEnemy.name = "Enemy FR";
-        else if (enemyChoice.name == "Grounded_Melee_Enemy_Prefab")
-            tempEnemy.name = "Enemy GM";
-        else if (enemyChoice.name == "Grounded_Ranged_Enemy_Prefab")
-            tempEnemy.name = "Enemy GR";
-        tempEnemy.transform.parent = transform;
-        currentRoomComponents.numberOfEnemies -= 1;
-        isSpawning = false;
     }
 }

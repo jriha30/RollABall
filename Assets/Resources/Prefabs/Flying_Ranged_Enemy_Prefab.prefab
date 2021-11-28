@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whichRoom: {fileID: 0}
-  maxHitpoints: 20
+  maxHitpoints: 10
   currentHitpoints: 0
   armorClass: 0
   damage: 5
@@ -158,7 +158,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  projectile: {fileID: 856903499149260665, guid: 028a158ddbccd0e4faf64ae7c3135f81, type: 3}
+  timer: {fileID: 0}
   upDownDirection: 0
   speed: 1
   distance: 0
-  projectile: {fileID: 856903499149260665, guid: 028a158ddbccd0e4faf64ae7c3135f81, type: 3}
+  isShooting: 0
+  shootClock: 0
+  whenToShoot: 0
+  frequency: 1
