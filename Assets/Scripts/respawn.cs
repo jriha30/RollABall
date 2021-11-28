@@ -29,7 +29,7 @@ public class respawn : MonoBehaviour
         }
     }
 
-    private void ClearArea()
+    public static void ClearArea()
     {
         if(GameObject.Find("Hub") != null)
         {

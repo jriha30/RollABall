@@ -16,7 +16,9 @@ public class Boss_Room : MonoBehaviour
 
     public GameObject map_Ender;
 
-    public static bool bossAlive = true;
+    public GameObject mapEnderInstance;
+
+    public bool bossAlive = true;
 
     public bool shouldClear = true;
     public bool bossOn = false;
@@ -30,6 +32,7 @@ public class Boss_Room : MonoBehaviour
         map_Ender = Resources.Load<GameObject>("Prefabs/map_Ender");
         bossEnemyInstance = Instantiate(bossEnemy, transform.position, Quaternion.identity);
         bossEnemyInstance.name = "Boss";
+        bossEnemyInstance.transform.parent = transform;
         playerRoom.SetBossReference(bossEnemyInstance);
         bossEnemyInstance.SetActive(false);
     }
@@ -46,8 +49,8 @@ public class Boss_Room : MonoBehaviour
         {
             GetComponent<Change_Self>().ClearEnemies();
             shouldClear = false;
-            Instantiate(map_Ender, bossEnemyFinalPosition, Quaternion.identity);
-            print(bossEnemyFinalPosition);
+            mapEnderInstance = Instantiate(map_Ender, bossEnemyFinalPosition, Quaternion.identity);
+            mapEnderInstance.transform.parent = Get_Room.currentRoom.transform;
         }
     }
 }

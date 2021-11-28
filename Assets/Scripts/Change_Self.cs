@@ -18,7 +18,7 @@ public class Change_Self : MonoBehaviour
     {
         if(name == "Boss Room")
         {
-            if(!Boss_Room.bossAlive)
+            if(!GetComponent<Boss_Room>().bossAlive)
             {
                 OpenDoors();
                 whenToOpenDoors = -1;

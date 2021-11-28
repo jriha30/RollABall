@@ -29,7 +29,6 @@ public class Enemy_Functions : MonoBehaviour
         float hitNumber = Random.Range(1f, 20f);
         if (hitNumber <= armorClass)
         {
-            print("Dodged");
             return false;
         }
         else
@@ -44,7 +43,7 @@ public class Enemy_Functions : MonoBehaviour
     {
         if(gameObject.name == "Boss")
         {
-            Boss_Room.bossAlive = false;
+            transform.parent.gameObject.GetComponent<Boss_Room>().bossAlive = false;
             Boss_Room.bossEnemyFinalPosition = transform.position;
         }
         if(GetComponent<Enemy_Components>().whichRoom != null)
