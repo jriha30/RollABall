@@ -166,4 +166,4 @@ MonoBehaviour:
   isShooting: 0
   shootClock: 0
   whenToShoot: 0
-  frequency: 1
+  frequency: 3

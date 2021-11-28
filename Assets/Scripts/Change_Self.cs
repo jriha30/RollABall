@@ -16,15 +16,26 @@ public class Change_Self : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        if (whenToOpenDoors != -1 && isDoorsClosed && GetComponent<Room_Components>().numberOfEnemies == 0 && GetComponent<Room_Components>().listOfEnemies.Count == 0)
+        if(name == "Boss Room")
         {
-            if (Time_Record.current_Time > whenToOpenDoors)
+            if(!Boss_Room.bossAlive)
             {
                 OpenDoors();
                 whenToOpenDoors = -1;
                 isDoorsClosed = false;
+            }
+        }
+        else
+        {
+            if (whenToOpenDoors != -1 && isDoorsClosed && GetComponent<Room_Components>().numberOfEnemies == 0 && GetComponent<Room_Components>().listOfEnemies.Count == 0)
+            {
+                print("Test!!!!");
+                if (Time_Record.current_Time > whenToOpenDoors)
+                {
+                    OpenDoors();
+                    whenToOpenDoors = -1;
+                    isDoorsClosed = false;
+                }
             }
         }
     }

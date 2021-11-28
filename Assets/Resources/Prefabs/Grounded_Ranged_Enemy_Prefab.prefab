@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   projectile: {fileID: 856903499149260665, guid: 028a158ddbccd0e4faf64ae7c3135f81, type: 3}
-  frequency: 1
+  frequency: 2
   speed: 5
   directionVector: {x: 0, y: 0, z: 0}
   isShooting: 0

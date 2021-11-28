@@ -34,6 +34,8 @@ public class FR_Enemy_Controller : MonoBehaviour
         distance = Random.Range(2f, 10f);
         upperBound = transform.position.y + distance;
         lowerBound = transform.position.y - distance;
+        shootClock = Time_Record.current_Time;
+        whenToShoot = shootClock;
     }
 
     // Update is called once per frame

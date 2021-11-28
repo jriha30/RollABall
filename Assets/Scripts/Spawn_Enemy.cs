@@ -42,7 +42,15 @@ public class Spawn_Enemy : MonoBehaviour
         if(currentRoom != null)
         {
             Room_Components currentRoomComponents = currentRoom.GetComponent<Room_Components>();
-            if (currentRoomComponents.isCleared || currentRoomComponents.numberOfEnemies == 0)
+            if (currentRoomComponents.numberOfEnemies == 0)
+            {
+                if(currentRoom.name != "Boss Room")
+                {
+                    isSpawning = false;
+                    return;
+                }
+            }
+            if(currentRoomComponents.isCleared)
             {
                 isSpawning = false;
                 return;

@@ -27,6 +27,8 @@ public class GR_Enemy_Controller : MonoBehaviour
         player = GameObject.Find("Player");
         timer = GameObject.Find("Time_Manager");
         rb = GetComponent<Rigidbody>();
+        shootClock = Time_Record.current_Time;
+        whenToShoot = shootClock;
     }
 
     // Update is called once per frame
@@ -79,19 +81,19 @@ public class GR_Enemy_Controller : MonoBehaviour
         float rand = Random.Range(0f, 10f);
         if(rand >= 0 && rand < 1)
         {
-            rb.AddForce(Vector3.forward * speed, ForceMode.Impulse);
+            rb.AddForce(Vector3.forward * speed, ForceMode.VelocityChange);
         }
         else if (rand >= 1 && rand < 2)
         {
-            rb.AddForce(Vector3.back * speed, ForceMode.Impulse);
+            rb.AddForce(Vector3.back * speed, ForceMode.VelocityChange);
         }
         else if (rand >= 2 && rand < 3)
         {
-            rb.AddForce(Vector3.left * speed, ForceMode.Impulse);
+            rb.AddForce(Vector3.left * speed, ForceMode.VelocityChange);
         }
         else if (rand >= 3 && rand < 5)
         {
-            rb.AddForce(Vector3.right * speed, ForceMode.Impulse);
+            rb.AddForce(Vector3.right * speed, ForceMode.VelocityChange);
         }
         else
         {

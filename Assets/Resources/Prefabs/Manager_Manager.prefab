@@ -225,6 +225,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 713137959545686280}
+    - target: {fileID: 7986917824449493486, guid: ed6bd1b3ab061ec45aa60d773c3d5169, type: 3}
+      propertyPath: frequency
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed6bd1b3ab061ec45aa60d773c3d5169, type: 3}
 --- !u!4 &6480719305017082354 stripped
