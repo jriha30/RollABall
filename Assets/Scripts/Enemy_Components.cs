@@ -18,6 +18,11 @@ public class Enemy_Components : MonoBehaviour
         currentHitpoints = maxHitpoints;
     }
 
+    public void ResetBoss()
+    {
+        currentHitpoints = maxHitpoints;
+    }
+
     // Update is called once per frame
     void Update()
     {
