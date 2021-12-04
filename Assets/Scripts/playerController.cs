@@ -73,6 +73,7 @@ public class playerController : MonoBehaviour
     private void Update()
     {
         GetPlayerInput();
+        CheckMoving();
         ChangeCamera();
     }
 
@@ -82,6 +83,14 @@ public class playerController : MonoBehaviour
         MovePlayer();
         StaminaChanges();
         ResetValues();
+    }
+
+    private void CheckMoving()
+    {
+        if(rb.velocity != Vector3.zero)
+        {
+            isMoving = true;
+        }
     }
 
     private void StaminaChanges()

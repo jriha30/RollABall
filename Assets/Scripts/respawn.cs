@@ -8,7 +8,9 @@ public class respawn : MonoBehaviour
     public playerController player;
     public int height;
 
-    public GameObject Manager;
+    public List<GameObject> listOfPlaces;
+
+    public bool isHappening = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,27 +19,47 @@ public class respawn : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(rb.position.y < height)
+        if(rb.position.y <= height)
         {
-            player.transform.position = new Vector3(0f, 0.5f, 0f);
+            print("WHY IS THIS HAPPENING");
+            player.transform.position = new Vector3(0f, 2f, 0f);
             player.isSprinting = false;
+            rb.velocity = Vector3.zero;
             ClearArea();
-            GameObject manager_object = Instantiate(Manager);
-            manager_object.name = "Manager_Manager";
+            CreateNextLevel();
+            isHappening = false;
+        }
+    }
+
+    private void CreateNextLevel()
+    {
+        int level = Random.Range(0, listOfPlaces.Count);
+        print("Create Next Level Test   " + level + "   " + listOfPlaces[level]);
+        GameObject nextArea = Instantiate(listOfPlaces[level], new Vector3(0, 0, 0), Quaternion.identity);
+        if (level == 0)
+        {
+            print("Manager!");
+            nextArea.name = "Manager_Manager";
+        }
+        else if(level == 1)
+        {
+            print("Hub!");
+            nextArea.name = "Hub";
         }
     }
 
     public static void ClearArea()
     {
-        if(GameObject.Find("Hub") != null)
+        print("Clear Area Test");
+        GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (GameObject i in rootObjects)
         {
-            Destroy(GameObject.Find("Hub"));
-        }
-        if (GameObject.Find("Manager_Manager") != null)
-        {
-            Destroy(GameObject.Find("Manager_Manager"));
+            if (i.name != "Player" && i.name != "Canvas")
+            {
+                Destroy(i);
+            }
         }
     }
 }

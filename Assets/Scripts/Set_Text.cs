@@ -9,8 +9,6 @@ public class Set_Text : MonoBehaviour
 
     private List<string> explatives = new List<string>() { "BANG!", "WOW!"};
 
-    public GameObject timer;
-
     public float whenToTurnOffText = -1;
     public bool isOnScreen;
 

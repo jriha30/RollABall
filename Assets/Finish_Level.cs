@@ -7,10 +7,13 @@ public class Finish_Level : MonoBehaviour
 
     public GameObject player;
 
+    public Set_Text text;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        text = GameObject.Find("Canvas").GetComponent<Set_Text>();
     }
 
 
@@ -22,6 +25,7 @@ public class Finish_Level : MonoBehaviour
         }
         else if(collision.gameObject.GetComponent<Get_Shot>().parent == player)
         {
+            text.ResetText();
             respawn.ClearArea();
         }
     }
