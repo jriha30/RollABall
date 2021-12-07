@@ -26,12 +26,10 @@ public class Player_Functions : MonoBehaviour
         float hitNumber = Random.Range(1f, 20f);
         if (hitNumber <= armorClass)
         {
-            print("Dodged");
             return false;
         }
         else
         {
-            print("Hit!");
             return true;
         }
     }

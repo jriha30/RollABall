@@ -14,6 +14,7 @@ TagManager:
   - FR Enemy
   - GM Enemy
   - GR Enemy
+  - BAD_ML
   layers:
   - Default
   - TransparentFX

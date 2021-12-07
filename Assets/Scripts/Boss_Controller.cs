@@ -36,7 +36,7 @@ public class Boss_Controller : MonoBehaviour
     {
         if(gameObject.activeSelf)
         {
-            ControlBoss();
+            //ControlBoss();
         }
     }
 

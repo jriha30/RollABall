@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
 
 public class Get_Shot : MonoBehaviour
 {
@@ -15,6 +18,8 @@ public class Get_Shot : MonoBehaviour
 
     public float whenToDestroy;
 
+    public bool HitTarget = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +32,19 @@ public class Get_Shot : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject != parent && collision.transform.tag == "Enemy")
+        if(collision.gameObject == parent)
+        {
+            return;
+        }
+        if (collision.transform.tag == "Enemy" && parent.tag != "Enemy")
         {
             GameObject hitCharacter = collision.transform.gameObject;
-            if(hitCharacter.GetComponent<Enemy_Functions>().Dodge(hitCharacter.GetComponent<Enemy_Components>().armorClass))
+            if (hitCharacter.GetComponent<Enemy_Functions>().Dodge(hitCharacter.GetComponent<Enemy_Components>().armorClass))
             {
                 hitCharacter.GetComponent<Enemy_Functions>().GetHit(damage * charge);
             }
         }
-        else if(collision.gameObject != parent && collision.transform.tag == "Player")
+        else if (collision.transform.tag == "Player" && parent.tag != "Player")
         {
             GameObject hitCharacter = collision.transform.gameObject;
             if (hitCharacter.GetComponent<Player_Functions>().Dodge(hitCharacter.GetComponent<Player_Components>().armorClass))
@@ -43,14 +52,16 @@ public class Get_Shot : MonoBehaviour
                 hitCharacter.GetComponent<Player_Functions>().GetHit(damage * charge);
             }
         }
-        if (collision.gameObject != parent)
-        Destroy(transform.gameObject);
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(parent == null)
+        {
+            Destroy(gameObject);
+        }
     }
     void FixedUpdate()
     {

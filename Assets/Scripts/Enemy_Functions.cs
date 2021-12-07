@@ -33,7 +33,6 @@ public class Enemy_Functions : MonoBehaviour
         }
         else
         {
-            print("Hit!");
             return true;
         }
     }
