@@ -78,7 +78,7 @@ public class respawn : MonoBehaviour
     public void ClearAreaOnDeath()
     {
         Player_Components.isDead = true;
-        nextLocationOverride = listOfPlaces[1];
+        nextLocationOverride = listOfPlaces[0];
         GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
         foreach (GameObject i in rootObjects)
         {
