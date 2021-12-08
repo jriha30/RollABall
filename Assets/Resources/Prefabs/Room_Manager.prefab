@@ -51,7 +51,7 @@ MonoBehaviour:
   finalRoom: {fileID: 0}
   totalDoorNumber: 0
   numberOfRooms: 5
-  roomsToAdd: 500
+  roomsToAdd: 1000
 --- !u!114 &7069666916137928891
 MonoBehaviour:
   m_ObjectHideFlags: 0

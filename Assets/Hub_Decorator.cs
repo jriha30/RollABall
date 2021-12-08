@@ -9,6 +9,8 @@ public class Hub_Decorator : MonoBehaviour
     public int counter = 0;
     public int frequency;
 
+    public bool shouldDecorate = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +20,31 @@ public class Hub_Decorator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        counter++;
-        if (counter % frequency == 0)
+        shouldDecorate = true;
+        GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (GameObject i in rootObjects)
         {
-            GameObject tempFireball = Instantiate(fireball, new Vector3(Random.Range(-300f, 300f), Random.Range(-500, 500f), Random.Range(-300f, 300f)),Quaternion.identity);
-            float random = Random.Range(1f, 10f);
-            tempFireball.transform.localScale = new Vector3(random,random,random);
-            if(Random.Range(0,5) == 0)
+            if(i.name == "Manager_Manager")
             {
-                tempFireball.GetComponent<Rigidbody>().drag = Random.Range(0, 100);
+                shouldDecorate = false;
+                break;
             }
-            //tempFireball.GetComponent<TrailRenderer>().startColor;
+        }
+
+        if(shouldDecorate)
+        {
+            counter++;
+            if (counter % frequency == 0)
+            {
+                GameObject tempFireball = Instantiate(fireball, new Vector3(Random.Range(-300f, 300f), Random.Range(-500, 500f), Random.Range(-300f, 300f)), Quaternion.identity);
+                float random = Random.Range(1f, 10f);
+                tempFireball.transform.localScale = new Vector3(random, random, random);
+                if (Random.Range(0, 5) == 0)
+                {
+                    tempFireball.GetComponent<Rigidbody>().drag = Random.Range(0, 100);
+                }
+                //tempFireball.GetComponent<TrailRenderer>().startColor;
+            }
         }
     }
 }
