@@ -88,13 +88,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time_Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1865266412508614828, guid: 7a9503e22f797f8458656f044671c188, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9503e22f797f8458656f044671c188, type: 3}
---- !u!1 &713137959545686280 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1865266412508614828, guid: 7a9503e22f797f8458656f044671c188, type: 3}
-  m_PrefabInstance: {fileID: 1154982922673609124}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &713137959545686326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1865266412508614802, guid: 7a9503e22f797f8458656f044671c188, type: 3}
@@ -224,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 7986917824449493486, guid: ed6bd1b3ab061ec45aa60d773c3d5169, type: 3}
       propertyPath: timer
       value: 
-      objectReference: {fileID: 713137959545686280}
+      objectReference: {fileID: 1865266412508614828, guid: 7a9503e22f797f8458656f044671c188, type: 3}
     - target: {fileID: 7986917824449493486, guid: ed6bd1b3ab061ec45aa60d773c3d5169, type: 3}
       propertyPath: frequency
       value: 5

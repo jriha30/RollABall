@@ -2052,6 +2052,8 @@ MonoBehaviour:
   - {fileID: 7119026363959030752, guid: 29bcf2add0e76dc4bb6da430253b4f75, type: 3}
   isHappening: 0
   nextLocationOverride: {fileID: 0}
+  walkingSound: {fileID: 1058388419}
+  music: {fileID: 0}
 --- !u!114 &1953193351
 MonoBehaviour:
   m_ObjectHideFlags: 0

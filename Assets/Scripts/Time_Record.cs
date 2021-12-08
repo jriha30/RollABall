@@ -9,12 +9,13 @@ public class Time_Record : MonoBehaviour
 
     void Start()
     {
-        current_Time = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        print(current_Time);
         current_Time = newTime(current_Time);
     }
 

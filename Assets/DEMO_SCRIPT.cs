@@ -20,7 +20,7 @@ public class DEMO_SCRIPT : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Instantiate(map, new Vector3(0, -300, 0), Quaternion.identity);
+            Instantiate(map, new Vector3(0, -1000, 0), Quaternion.identity);
         }
         else if (Input.GetKeyDown(KeyCode.P))
         {

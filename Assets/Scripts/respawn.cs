@@ -15,6 +15,9 @@ public class respawn : MonoBehaviour
 
     public GameObject nextLocationOverride = null;
 
+    public AudioSource walkingSound;
+    public AudioSource music;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,11 +48,14 @@ public class respawn : MonoBehaviour
             {
                 GameObject nextArea = Instantiate(listOfPlaces[0], new Vector3(0, 0, 0), Quaternion.identity);
                 nextArea.name = "Hub";
+                walkingSound.mute = true;
+                music.pitch += .1f;
             }
             else
             {
                 GameObject nextArea = Instantiate(listOfPlaces[1], new Vector3(0, 0, 0), Quaternion.identity);
                 nextArea.name = "Manager_Manager";
+                walkingSound.mute = false;
             }
         }
         else
@@ -77,6 +83,7 @@ public class respawn : MonoBehaviour
 
     public void ClearAreaOnDeath()
     {
+        music.pitch = 1.2f;
         Player_Components.isDead = true;
         nextLocationOverride = listOfPlaces[0];
         GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();

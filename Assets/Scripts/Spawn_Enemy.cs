@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawn_Enemy : MonoBehaviour
 {
-    public float enemySpawnClock = 0;
+    public float enemySpawnClock;
     public float frequency;
     public List<GameObject> enemy;
 
@@ -18,7 +18,7 @@ public class Spawn_Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemySpawnClock = Time_Record.current_Time;
     }
 
     // Update is called once per frame
