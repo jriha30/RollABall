@@ -49,6 +49,7 @@ public class respawn : MonoBehaviour
                 GameObject nextArea = Instantiate(listOfPlaces[0], new Vector3(0, 0, 0), Quaternion.identity);
                 nextArea.name = "Hub";
                 walkingSound.mute = true;
+                music.mute = false;
                 music.pitch += .1f;
             }
             else
@@ -56,6 +57,7 @@ public class respawn : MonoBehaviour
                 GameObject nextArea = Instantiate(listOfPlaces[1], new Vector3(0, 0, 0), Quaternion.identity);
                 nextArea.name = "Manager_Manager";
                 walkingSound.mute = false;
+                music.mute = true;
             }
         }
         else
@@ -64,6 +66,8 @@ public class respawn : MonoBehaviour
             Player_Components.isDead = false;
             GameObject nextArea = Instantiate(nextLocationOverride, new Vector3(0, 0, 0), Quaternion.identity);
             nextLocationOverride = null;
+            walkingSound.mute = true;
+            music.mute = false;
         }
         pc.currentMagic = pc.maxMagic;
         pc.currentStamina = pc.maxStamina;
@@ -83,7 +87,7 @@ public class respawn : MonoBehaviour
 
     public void ClearAreaOnDeath()
     {
-        music.pitch = 1.2f;
+        music.pitch = .8f;
         Player_Components.isDead = true;
         nextLocationOverride = listOfPlaces[0];
         GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();

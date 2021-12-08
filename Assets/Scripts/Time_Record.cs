@@ -15,7 +15,6 @@ public class Time_Record : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(current_Time);
         current_Time = newTime(current_Time);
     }
 
