@@ -69,7 +69,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -117,6 +116,7 @@ MonoBehaviour:
   currentHitpoints: 0
   armorClass: 0
   damage: 5
+  charge: 1
 --- !u!54 &2313145301271453794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,4 +166,4 @@ MonoBehaviour:
   isShooting: 0
   shootClock: 0
   whenToShoot: 0
-  frequency: 3
+  frequency: 2

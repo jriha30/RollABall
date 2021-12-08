@@ -4,6 +4,12 @@ public class HealthBar : MonoBehaviour
 {
     public Image healthBarImage;
     public GameObject player;
+    public Player_Components playerComp;
+
+    void Start()
+    {
+        playerComp = player.GetComponent<Player_Components>();
+    }
 
     void FixedUpdate()
     {
@@ -13,7 +19,7 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar()
     {
         Vector3 newScale = healthBarImage.transform.localScale;
-        newScale.x = Mathf.Clamp(player.GetComponent<Player_Components>().currentHitpoints / player.GetComponent<Player_Components>().maxHitpoints, 0, 1f);
+        newScale.x = Mathf.Clamp(playerComp.currentHitpoints / playerComp.maxHitpoints, 0, 1f);
         healthBarImage.transform.localScale = newScale;
     }
 }

@@ -69,7 +69,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -116,7 +115,8 @@ MonoBehaviour:
   maxHitpoints: 15
   currentHitpoints: 0
   armorClass: 0
-  damage: 5
+  damage: 3
+  charge: 0.5
 --- !u!54 &1682240849756613241
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   projectile: {fileID: 856903499149260665, guid: 028a158ddbccd0e4faf64ae7c3135f81, type: 3}
-  frequency: 2
+  frequency: 0.5
   speed: 5
   directionVector: {x: 0, y: 0, z: 0}
   isShooting: 0

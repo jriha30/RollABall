@@ -11,6 +11,7 @@ public class Enemy_Components : MonoBehaviour
     public float armorClass;
 
     public float damage;
+    public float charge;
 
     // Start is called before the first frame update
     void Start()

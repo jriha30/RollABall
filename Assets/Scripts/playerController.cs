@@ -39,6 +39,8 @@ public class playerController : MonoBehaviour
 
     private Player_Components components;
 
+    public respawn respawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,7 @@ public class playerController : MonoBehaviour
         CheckFalling();
         MovePlayer();
         StaminaChanges();
+        MagicChanges();
         ResetValues();
     }
 
@@ -95,22 +98,47 @@ public class playerController : MonoBehaviour
 
     private void StaminaChanges()
     {
+        StaminaBar sb = components.staminaBar;
         if (isSprinting)
         {
-            components.currentStamina -= components.staminaBar.GetComponent<StaminaBar>().emptyRate;
+            components.currentStamina -= sb.emptyRate;
         }
         else if (isMoving)
         {
-            components.currentStamina += components.staminaBar.GetComponent<StaminaBar>().recoverRate / 5;
+            components.currentStamina += sb.recoverRate / 5;
         }
         else
         {
-            components.currentStamina += components.staminaBar.GetComponent<StaminaBar>().recoverRate;
+            components.currentStamina += sb.recoverRate;
+        }
+    }
+
+    private void MagicChanges()
+    {
+        if(components.currentRoom != null && components.currentMagic < components.maxMagic && !components.currentRoom.GetComponent<Room_Components>().isCleared)
+        {
+            components.currentMagic += components.magicBar.recoverRate;
         }
     }
 
     void LateUpdate()
     {
+        if (components.currentHitpoints > components.maxHitpoints)
+        {
+            components.currentHitpoints = components.maxHitpoints;
+        }
+        else if(components.currentHitpoints < 0)
+        {
+            components.currentHitpoints = 0;
+        }
+        if (components.currentMagic > components.maxMagic)
+        {
+            components.currentMagic = components.maxMagic;
+        }
+        else if(components.currentMagic < 0)
+        {
+            components.currentMagic = 0;
+        }
         if(components.currentStamina > components.maxStamina)
         {
             components.currentStamina = components.maxStamina;
@@ -124,6 +152,11 @@ public class playerController : MonoBehaviour
         if (!isMoving)
         {
             isSprinting = false;
+        }
+
+        if(components.currentHitpoints == 0 && !Player_Components.isDead)
+        {
+            respawn.ClearAreaOnDeath();
         }
     }
 

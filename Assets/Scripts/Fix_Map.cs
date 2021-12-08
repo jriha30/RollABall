@@ -38,7 +38,17 @@ public class Fix_Map : MonoBehaviour
         SetMapSize();
         SetFinalRoom();
         AddCeilings();
+        FixFloorSize();
     }
+
+    private void FixFloorSize()
+    {
+        foreach(GameObject i in listOfRooms)
+        {
+            i.GetComponent<Room_Components>().floor.GetComponent<BoxCollider>().size = new Vector3(1, 1, 1);
+        }
+    }
+
 
     private void AddCeilings()
     {

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class StaminaBar : MonoBehaviour
 {
-
     public Image staminaBarImage;
     public GameObject player;
 

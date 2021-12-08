@@ -61,7 +61,8 @@ public class Boss_Controller : MonoBehaviour
         projectileObject.GetComponent<Get_Shot>().startPoint = transform.position;
         projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
         projectileObject.GetComponent<Get_Shot>().parent = gameObject;
-        projectileObject.GetComponent<Get_Shot>().charge = Random.Range(.5f, 1.25f);
+        projectileObject.GetComponent<Get_Shot>().charge = GetComponent<Enemy_Components>().charge;
+        projectileObject.GetComponent<Get_Shot>().damage = GetComponent<Enemy_Components>().damage;
         isShooting = false;
     }
 

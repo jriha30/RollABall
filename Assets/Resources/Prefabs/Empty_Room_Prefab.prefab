@@ -85,8 +85,8 @@ MonoBehaviour:
   isWestConnected: 0
   listOfEnemies: []
   numberOfEnemies: 0
-  minEnemies: 2
-  maxEnemies: 5
+  minEnemies: 10
+  maxEnemies: 20
 --- !u!114 &1784951108760886105
 MonoBehaviour:
   m_ObjectHideFlags: 0

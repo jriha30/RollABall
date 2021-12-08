@@ -6,16 +6,20 @@ public class respawn : MonoBehaviour
 {
     private Rigidbody rb;
     public playerController player;
+    public Player_Components pc;
     public int height;
 
     public List<GameObject> listOfPlaces;
 
     public bool isHappening = false;
 
+    public GameObject nextLocationOverride = null;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        pc = player.gameObject.GetComponent<Player_Components>();
     }
 
     // Update is called once per frame
@@ -23,7 +27,6 @@ public class respawn : MonoBehaviour
     {
         if(rb.position.y <= height)
         {
-            print("WHY IS THIS HAPPENING");
             player.transform.position = new Vector3(0f, 2f, 0f);
             player.isSprinting = false;
             rb.velocity = Vector3.zero;
@@ -35,16 +38,29 @@ public class respawn : MonoBehaviour
 
     private void CreateNextLevel()
     {
-        int level = Random.Range(0, listOfPlaces.Count);
-        GameObject nextArea = Instantiate(listOfPlaces[level], new Vector3(0, 0, 0), Quaternion.identity);
-        if (level == 0)
+        int level = Random.Range(0, 10);
+        if(nextLocationOverride == null)
         {
-            nextArea.name = "Manager_Manager";
+            if (level == 0)
+            {
+                GameObject nextArea = Instantiate(listOfPlaces[0], new Vector3(0, 0, 0), Quaternion.identity);
+                nextArea.name = "Hub";
+            }
+            else
+            {
+                GameObject nextArea = Instantiate(listOfPlaces[1], new Vector3(0, 0, 0), Quaternion.identity);
+                nextArea.name = "Manager_Manager";
+            }
         }
-        else if(level == 1)
+        else
         {
-            nextArea.name = "Hub";
+            pc.currentHitpoints = pc.maxHitpoints;
+            Player_Components.isDead = false;
+            GameObject nextArea = Instantiate(nextLocationOverride, new Vector3(0, 0, 0), Quaternion.identity);
+            nextLocationOverride = null;
         }
+        pc.currentMagic = pc.maxMagic;
+        pc.currentStamina = pc.maxStamina;
     }
 
     public static void ClearArea()
@@ -52,7 +68,21 @@ public class respawn : MonoBehaviour
         GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
         foreach (GameObject i in rootObjects)
         {
-            if (i.name != "Player" && i.name != "Canvas")
+            if (i.name != "Player" && i.name != "Canvas" && i.name != "Decorator")
+            {
+                Destroy(i);
+            }
+        }
+    }
+
+    public void ClearAreaOnDeath()
+    {
+        Player_Components.isDead = true;
+        nextLocationOverride = listOfPlaces[1];
+        GameObject[] rootObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+        foreach (GameObject i in rootObjects)
+        {
+            if (i.name != "Player" && i.name != "Canvas" && i.name != "Decorator")
             {
                 Destroy(i);
             }

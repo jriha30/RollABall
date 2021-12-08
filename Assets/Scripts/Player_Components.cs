@@ -12,9 +12,15 @@ public class Player_Components : MonoBehaviour
 
     public HealthBar healthBar;
     public StaminaBar staminaBar;
+    public MagicBar magicBar;
 
     public int maxStamina;
     public float currentStamina;
+
+    public int maxMagic;
+    public float currentMagic;
+
+    public static bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +28,6 @@ public class Player_Components : MonoBehaviour
         currentRoom = Get_Room.currentRoom;
         currentHitpoints = maxHitpoints;
         currentStamina = maxStamina;
+        currentMagic = maxMagic;
     }
 }
