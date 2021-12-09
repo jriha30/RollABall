@@ -226,6 +226,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3451319176928999367, guid: ad7d56f7dbaaffc4399c72e2ae7e74ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451319176928999367, guid: ad7d56f7dbaaffc4399c72e2ae7e74ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451319176928999367, guid: ad7d56f7dbaaffc4399c72e2ae7e74ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3451319177255067812, guid: ad7d56f7dbaaffc4399c72e2ae7e74ab, type: 3}
       propertyPath: m_Name
       value: ML_Environment_2
@@ -1373,8 +1385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be783b235964ab4fa2c9db2a1ed341e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  force: 100
 --- !u!54 &1692370459
 Rigidbody:
   m_ObjectHideFlags: 0

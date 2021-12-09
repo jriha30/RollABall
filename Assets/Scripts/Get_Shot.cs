@@ -41,7 +41,7 @@ public class Get_Shot : MonoBehaviour
             GameObject hitCharacter = collision.transform.gameObject;
             if (hitCharacter.GetComponent<Enemy_Functions>().Dodge(hitCharacter.GetComponent<Enemy_Components>().armorClass))
             {
-                hitCharacter.GetComponent<Enemy_Functions>().GetHit(damage * charge);
+                hitCharacter.GetComponent<Enemy_Functions>().GetHit(damage);
             }
         }
         else if (collision.transform.tag == "Player" && parent.tag != "Player")
@@ -49,7 +49,7 @@ public class Get_Shot : MonoBehaviour
             GameObject hitCharacter = collision.transform.gameObject;
             if (hitCharacter.GetComponent<Player_Functions>().Dodge(hitCharacter.GetComponent<Player_Components>().armorClass))
             {
-                hitCharacter.GetComponent<Player_Functions>().GetHit(damage * charge);
+                hitCharacter.GetComponent<Player_Functions>().GetHit(damage);
             }
         }
         Destroy(gameObject);

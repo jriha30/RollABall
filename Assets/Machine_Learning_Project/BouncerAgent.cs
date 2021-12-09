@@ -25,7 +25,7 @@ public class BouncerAgent : Agent
     {
         rb = GetComponent<Rigidbody>();
         opponentrb = opponent.gameObject.GetComponent<Rigidbody>();
-        Time.timeScale = 10;
+        Time.timeScale = 5;
     }
 
     public override void OnEpisodeBegin()
@@ -39,10 +39,11 @@ public class BouncerAgent : Agent
         //        floor.localScale = Vector3.one;
         //    }
         //}
-        if (Random.Range(0, 10) == 0)
-        {
-            floor.localScale = new Vector3(Random.Range(1f, 7f), 1, Random.Range(1f, 7f));
-        }
+
+        //if (Random.Range(0, 10) == 0)
+        //{
+        //    floor.localScale = new Vector3(Random.Range(1f, 7f), 1, Random.Range(1f, 7f));
+        //}
 
         float floorSizeHalfX = floor.localScale.x * 5;
         float floorSizeHalfZ = floor.localScale.z * 5;
@@ -95,11 +96,11 @@ public class BouncerAgent : Agent
             EndEpisode();
             opponent.GetComponent<BouncerTarget>().EndEpisode();
         }
-        //if (transform.localPosition.y < 0)
-        //{
-        //    AddReward(-1f);
-        //    EndEpisode();
-        //}
+        if (transform.localPosition.y < 0)
+        {
+            AddReward(-1f);
+            EndEpisode();
+        }
         if (currentDistance < distanceToOpponent)
         {
             AddReward(-.01f);

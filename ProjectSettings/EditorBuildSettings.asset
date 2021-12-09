@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGame.unity
     guid: 4b1b4bd28eb221949a1bd430cfce6acf
+  - enabled: 0
+    path: Assets/Machine_Learning_Project/TAKE2 MACHINE LEARNING.unity
+    guid: 7bf77df5d61c6d942a02d434ee9a9485
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: aaa4d3870e6b5b844bc479668759cded, type: 2}

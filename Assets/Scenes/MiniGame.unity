@@ -2429,8 +2429,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 7069666916137928886, guid: 6cd8aec78f57ffa48b0a13208c632903, type: 3}
+  smallMap: {fileID: 7783926087457518206, guid: 3b7c6034fb435bd4686b8e7f755d9992, type: 3}
+  mainCamera: {fileID: 1782656398}
   hd: {fileID: 1147364729}
   pc: {fileID: 1953193356}
+  enemy1: {fileID: 8922908189537696999, guid: 1fdb74a896ac17a4fb53fbe2a9d54870, type: 3}
+  enemy2: {fileID: 4850791646419321295, guid: 5268706c364b5984595be3e85c732a97, type: 3}
+  enemy3: {fileID: 2015850176047827011, guid: 86b765913fdfcaf4da27dc3e2eac0758, type: 3}
+  enemy4: {fileID: 9039109917382743110, guid: fb6b2bfb59e019840ae015c63655e6a3, type: 3}
 --- !u!1 &2125278655
 GameObject:
   m_ObjectHideFlags: 0

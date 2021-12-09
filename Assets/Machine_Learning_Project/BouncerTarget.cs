@@ -78,11 +78,11 @@ public class BouncerTarget : Agent
         //    AddReward(-1f);
         //    EndEpisode();
         //}
-        //if (transform.localPosition.y < 0)
-        //{
-        //    AddReward(-1f);
-        //    EndEpisode();
-        //}
+        if (transform.localPosition.y < 0)
+        {
+            AddReward(-1f);
+            EndEpisode();
+        }
         if (currentDistance <= distanceToOpponent)
         {
             AddReward(.1f);

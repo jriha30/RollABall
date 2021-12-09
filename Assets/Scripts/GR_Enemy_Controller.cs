@@ -34,7 +34,7 @@ public class GR_Enemy_Controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GroundedRangedControl();
+        //GroundedRangedControl();
     }
 
 
@@ -61,6 +61,7 @@ public class GR_Enemy_Controller : MonoBehaviour
         projectileObject.GetComponent<Get_Shot>().direction = (player.transform.position - transform.position).normalized;
         projectileObject.GetComponent<Get_Shot>().parent = gameObject;
         projectileObject.GetComponent<Get_Shot>().charge = GetComponent<Enemy_Components>().charge;
+        projectileObject.GetComponent<Get_Shot>().damage = GetComponent<Enemy_Components>().damage;
         isShooting = false;
     }
 

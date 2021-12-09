@@ -5,9 +5,17 @@ using UnityEngine;
 public class DEMO_SCRIPT : MonoBehaviour
 {
     public GameObject map;
+    public GameObject smallMap;
     private Rigidbody rb;
+    public GameObject mainCamera;
     public Hub_Decorator hd;
     public Player_Components pc;
+
+    public GameObject enemy1;
+    public GameObject enemy2;
+    public GameObject enemy3;
+    public GameObject enemy4;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +26,11 @@ public class DEMO_SCRIPT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Instantiate(map, new Vector3(0, -1000, 0), Quaternion.identity);
         }
-        else if (Input.GetKeyDown(KeyCode.P))
+        else if (Input.GetKeyDown(KeyCode.O))
         {
             if (hd.enabled)
             {
@@ -33,7 +41,7 @@ public class DEMO_SCRIPT : MonoBehaviour
                 hd.enabled = true;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.O))
+        else if (Input.GetKeyDown(KeyCode.I))
         {
             if (rb.useGravity)
             {
@@ -46,7 +54,40 @@ public class DEMO_SCRIPT : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.U))
         {
-            Destroy(pc.currentRoom.GetComponent<Room_Components>().ceiling);
+            RaycastHit hit;
+
+            if (Physics.Raycast(mainCamera.transform.position + mainCamera.transform.forward, mainCamera.transform.forward, out hit,10))
+            {
+                Destroy(hit.collider.gameObject);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Instantiate(smallMap, new Vector3(0, -1000, 0), Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            pc.currentHitpoints = 0;
+            pc.transform.position = Vector3.zero;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.useGravity = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            Instantiate(enemy1, pc.transform.position + pc.transform.forward * 5, Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            Instantiate(enemy2, pc.transform.position + pc.transform.forward * 5, Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            Instantiate(enemy3, pc.transform.position + pc.transform.forward * 5, Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            Instantiate(enemy4, pc.transform.position + pc.transform.forward * 5, Quaternion.identity);
         }
     }
 }
