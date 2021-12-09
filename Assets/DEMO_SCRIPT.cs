@@ -15,6 +15,7 @@ public class DEMO_SCRIPT : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject enemy4;
+    public GameObject bossEnemy;
 
 
     // Start is called before the first frame update
@@ -88,6 +89,10 @@ public class DEMO_SCRIPT : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Keypad4))
         {
             Instantiate(enemy4, pc.transform.position + pc.transform.forward * 5, Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            Instantiate(bossEnemy, pc.transform.position + pc.transform.forward * 5, Quaternion.identity);
         }
     }
 }

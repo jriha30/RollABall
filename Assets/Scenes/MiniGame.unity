@@ -2437,6 +2437,7 @@ MonoBehaviour:
   enemy2: {fileID: 4850791646419321295, guid: 5268706c364b5984595be3e85c732a97, type: 3}
   enemy3: {fileID: 2015850176047827011, guid: 86b765913fdfcaf4da27dc3e2eac0758, type: 3}
   enemy4: {fileID: 9039109917382743110, guid: fb6b2bfb59e019840ae015c63655e6a3, type: 3}
+  bossEnemy: {fileID: 8898608841664209038, guid: b0651d67edd28964292ea3ddce9e0c38, type: 3}
 --- !u!1 &2125278655
 GameObject:
   m_ObjectHideFlags: 0
